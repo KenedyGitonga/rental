@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservation List{% endblock %}
+
+{% block content %}
+  <h2>Reservation List</h2>
+  
+  {% if reservations %}
+    <ul>
+      {% for reservation in reservations %}
+        <li>
+          <a href="{% url 'reservation_detail' pk=reservation.pk %}">
+            {{ reservation.user.username }} reserved {{ reservation.car.year }} {{ reservation.car.make }} {{ reservation.car.model }} on {{ reservation.reservation_date }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No reservations available.</p>
+  {% endif %}
+{% endblock %}

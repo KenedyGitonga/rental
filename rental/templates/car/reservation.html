@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Reservations</h2>
+
+  {% if reservations %}
+    <ul class="list-group">
+      {% for reservation in reservations %}
+        <li class="list-group-item">
+          {{ reservation.car.year }} {{ reservation.car.make }} {{ reservation.car.model }} - {{ reservation.reservation_date }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">No reservations available.</p>
+  {% endif %}
+{% endblock %}

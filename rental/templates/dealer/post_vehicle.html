@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Post a Vehicle{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Post a Vehicle</h2>
+
+  {% if car %}
+    <p class="text-success">Vehicle posted successfully!</p>
+    <p><strong>Details:</strong></p>
+    <p>{{ car.year }} {{ car.make }} {{ car.model }} - ${{ car.price }}</p>
+  {% else %}
+    <form method="post" action="{% url 'post_vehicle' %}" class="mb-4">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Post Vehicle</button>
+    </form>
+  {% endif %}
+{% endblock %}
+

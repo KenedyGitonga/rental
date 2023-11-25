@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Dealer Dashboard{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Welcome, {{ dealer.user.username }}!</h2>
+
+  <h3>Your Posted Cars:</h3>
+  {% if car_posts %}
+    <ul class="list-group">
+      {% for car_post in car_posts %}
+        <li class="list-group-item">{{ car_post.year }} {{ car_post.make }} {{ car_post.model }} - ${{ car_post.price }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">You haven't posted any cars yet.</p>
+  {% endif %}
+{% endblock %}

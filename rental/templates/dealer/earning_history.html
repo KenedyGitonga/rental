@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Earning History{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Earning History</h2>
+
+  {% if earnings %}
+    <ul class="list-group">
+      {% for earning in earnings %}
+        <li class="list-group-item">{{ earning.date }} - Ksh{{ earning.amount }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">No earning history available.</p>
+  {% endif %}
+{% endblock %}

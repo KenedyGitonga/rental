@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+<body style="background-image: url('https://example.com/car-rental-background.jpg'); background-size: cover; background-position: center center;">
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to Car Rental</h1>
+    <p class="lead">Find the perfect car for your journey.</p>
+    <hr class="my-4">
+    <p>Explore our collection of high-quality vehicles available for rent.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'car_list' %}" role="button">View Cars</a>
+      <a href="{% url 'post_vehicle' %}">Post Vehicles</a>
+  </div>
+{% endblock %}
+</body>

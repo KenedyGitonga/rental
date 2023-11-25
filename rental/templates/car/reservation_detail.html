@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservation Detail{% endblock %}
+
+{% block content %}
+  <h2>Reservation Detail</h2>
+  
+  <p>User: {{ reservation.user.username }}</p>
+  <p>Car: {{ reservation.car.year }} {{ reservation.car.make }} {{ reservation.car.model }}</p>
+  <p>Reservation Date: {{ reservation.reservation_date }}</p>
+
+
+  
+  <a href="{% url 'reservation_list' %}">Back to Reservation List</a>
+{% endblock %}

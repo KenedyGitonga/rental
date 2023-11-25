@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ car.year }} {{ car.make }} {{ car.model }} - Car Detail{% endblock %}
+
+{% block content %}
+  <div class="card mt-4">
+    <div class="card-body">
+      <h2 class="card-title">{{ car.year }} {{ car.make }} {{ car.model }}</h2>
+      <p class="card-text">Price: Ksh{{ car.price }}</p>
+      <p class="card-text">Availability: {% if car.availability %}Available{% else %}Not Available{% endif %}</p>
+
+      {% if car.availability %}
+        <form method="post" action="{% url 'car_detail' pk=car.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Reserve Now</button>
+        </form>
+      {% else %}
+        <p class="text-danger">This car is currently reserved.</p>
+
+        <h3>Reservation History</h3>
+        {% if car.reservation_set.all %}
+          <ul class="list-unstyled">
+            {% for reservation in car.reservation_set.all %}
+              <li>{{ reservation.user.username }} reserved on {{ reservation.reservation_date }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No reservation history for this car.</p>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
